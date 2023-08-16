@@ -25,6 +25,8 @@ def wiggle(mc):
     mc.send_angles([37.96,-129.19,119.09,46.93,62.57,180.0], speed)
     #print('3/3 coords sent')
 
+    time.sleep(2)
+
     mc.send_angles([0, 0, 0, 0, 0, 0], speed)
     #print('Back to home...')
 
@@ -50,18 +52,23 @@ def bow(mc):
     #print('Back to home...')
 
 
-
 if __name__ == "__main__":
     mc = MyCobot(PI_PORT, 115200)
     mc.set_color(255,0,0)
 
-    # Zero out position 
-    mc.send_radians([0, 0, 0, 0, 0, 0], speed)
-    #print('Finding home first')
-    
-    time.sleep(2)
+    try:
+        while True:
+            # Zero out position 
+            mc.send_radians([0, 0, 0, 0, 0, 0], speed)
+            #print('Finding home first')
+            
+            time.sleep(2)
 
-    wiggle(mc)
-    bow(mc)
-    mc.set_color(255,0,0)
-    #print('Done')
+            wiggle(mc)
+            bow(mc)
+            mc.set_color(255,0,0)
+            #print('Done')
+    except KeyboardInterrupt:
+        print("Program interrupted.")
+    finally:
+        print("Program is done now.")
