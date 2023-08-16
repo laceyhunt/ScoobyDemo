@@ -26,6 +26,26 @@ def wiggle(mc):
     mc.send_angles([0, 0, 0, 0, 0, 0], 50)
     print('Back to home...')
 
+def bow(mc):
+    mc.send_angles([53.43,-17.05,112.06,0,0,180.0], 50)
+    print('Taking a left bow...')
+    time.sleep(2)
+
+    mc.send_angles([50.71,-3.42,2.02,0,0,180.0], 50)
+    print('Coming back up...')
+    time.sleep(1)
+
+    mc.send_angles([111.7,0,2.02,0,0,180.0], 50)
+    print('Moving to the right...')
+    time.sleep(1)
+
+    mc.send_angles([111.7,-28.47, 102.12,11.68,0,180.0], 50)
+    print('Taking a right bow...')
+    time.sleep(2)
+
+    mc.send_angles([0, 0, 0, 0, 0, 0], 50)
+    print('Back to home...')
+
 
 
 if __name__ == "__main__":
@@ -36,4 +56,7 @@ if __name__ == "__main__":
     print('Finding home first')
     
     time.sleep(2)
+
     wiggle(mc)
+    bow(mc)
+    print('Done')
