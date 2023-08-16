@@ -8,7 +8,7 @@ from pymycobot.mycobot import MyCobot
 from pymycobot import PI_PORT
 import time
 
-speed = 45
+speed = 70
 
 def wiggle(mc):
     mc.set_color(0,255,0)

@@ -193,9 +193,9 @@ class MycobotTest(object):
             time.sleep(0.1)
 
         if res:
-            self.write_log_to_Text("关节 {} 无法通信！！！".format(res))
+            self.write_log_to_Text("Joint {} unable to communicate！！！".format(res))
         else:
-            self.write_log_to_Text("所有关节连接正常。")
+            self.write_log_to_Text("All joints are connected normally.")
 
     def calibration_mycobot(self):
         """Calibration button click event.
@@ -214,10 +214,10 @@ class MycobotTest(object):
         time.sleep(0.1)
         self.mycobot.send_angle(self.calibration_num, 0, 0)
         time.sleep(0.1)
-        self.write_log_to_Text("校准电机 %s 结束." % self.calibration_num)
+        self.write_log_to_Text("Calibrate the motor %s done." % self.calibration_num)
 
         if self.calibration_num == 6:
-            self.write_log_to_Text("全部校准完成.")
+            self.write_log_to_Text("All calibrations complete.")
             self.calibration_num = None
             self.rectify_mycobot()
             self._calibration_test()
@@ -232,7 +232,7 @@ class MycobotTest(object):
             "blue": [0, 0, 255],
         }
         self.mycobot.set_color(*color_dict[color])
-        self.write_log_to_Text("发送颜色: {}.".format(color))
+        self.write_log_to_Text("Send colors: {}.".format(color))
 
     def start_aging_test(self):
         if not self.has_mycobot():
@@ -242,7 +242,7 @@ class MycobotTest(object):
         self.aging = threading.Thread(target=self._aging_test, daemon=True)
         self.aging.start()
         # self._aging_test()
-        self.write_log_to_Text("开始循环老化测试 ...")
+        self.write_log_to_Text("Start aging test ...")
 
     def stop_aging_test(self):
         try:
@@ -251,9 +251,9 @@ class MycobotTest(object):
             os.system("sudo rm /home/pi/Desktop/aging_test.py")
             os.system("sudo rm /etc/systemd/system/aging_test.service")
             os.system("sudo systemctl daemon-reload")
-            self.write_log_to_Text("结束循环老化测试.")
+            self.write_log_to_Text("End cycle aging test.")
         except:
-            self.write_log_to_Text("结束老化测试失败 ！！！")
+            self.write_log_to_Text("Aging test failed ！！！")
 
     def rectify_mycobot(self):
         if not self.has_mycobot():
@@ -284,7 +284,7 @@ class MycobotTest(object):
     def has_mycobot(self):
         """Check whether it is connected on mycobot"""
         if not self.mycobot:
-            self.write_log_to_Text("还没有连接mycobot！！！")
+            self.write_log_to_Text("Not connected to mycobot!")
             return False
         return True
 
@@ -411,7 +411,7 @@ class MycobotTest(object):
         os.system("sudo systemctl start aging_test.service")
 
     def _calibration_test(self):
-        self.write_log_to_Text("开始测试校准.")
+        self.write_log_to_Text("Start calibration testing.")
         angles = [0, 0, 0, 0, 0, 0]
         test_angle = [-20, 20, 0]
         for i in range(6):
@@ -419,7 +419,7 @@ class MycobotTest(object):
                 angles[i] = test_angle[j]
                 self.mycobot.send_angles(angles, 0)
                 time.sleep(0.7)
-        self.write_log_to_Text("测试校准结束.")
+        self.write_log_to_Text("Test calibration is complete.")
 
     def get_serial_port_list(self):
         plist = [
