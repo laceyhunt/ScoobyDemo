@@ -71,4 +71,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Program interrupted.")
     finally:
+        mc.stop()
+        mc.send_angles([0, 0, 0, 0, 0, 0], speed)
         print("Program is done now.")
