@@ -1,3 +1,8 @@
+
+# ROBOTS DON'T LIKE THIS ONE FOR SOME REASON
+#     motors freeze up, don't unlock without a reboot
+
+
 from pymycobot.mycobot import MyCobot
 from pymycobot import PI_PORT, PI_BAUD  # When using the Raspberry Pi version of mycobot, these two variables can be referenced to initialize MyCobot
 import time
