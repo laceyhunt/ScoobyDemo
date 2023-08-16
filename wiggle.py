@@ -8,7 +8,7 @@ from pymycobot.mycobot import MyCobot
 from pymycobot import PI_PORT
 import time
 
-speed = 40
+speed = 45
 
 def wiggle(mc):
     mc.set_color(0,255,0)
@@ -72,5 +72,4 @@ if __name__ == "__main__":
         print("Program interrupted.")
     finally:
         mc.stop()
-        mc.send_angles([0, 0, 0, 0, 0, 0], speed)
         print("Program is done now.")
