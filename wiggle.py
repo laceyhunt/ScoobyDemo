@@ -9,6 +9,7 @@ from pymycobot import PI_PORT
 import time
 
 def wiggle(mc):
+    mc.set_color(0,255,0)
     mc.send_angles([2.54,107.13,-119.09,-55.28,-9.31,180.0], 50)
     print('1/3 coords sent')
 
@@ -22,14 +23,14 @@ def wiggle(mc):
     mc.send_angles([37.96,-129.19,119.09,46.93,62.57,180.0], 50)
     print('3/3 coords sent')
 
-    # Back to home
     mc.send_angles([0, 0, 0, 0, 0, 0], 50)
     print('Back to home...')
 
 def bow(mc):
+    mc.set_color(0,0,255)
     mc.send_angles([53.43,-17.05,112.06,0,0,180.0], 50)
     print('Taking a left bow...')
-    time.sleep(2)
+    time.sleep(3)
 
     mc.send_angles([50.71,-3.42,2.02,0,0,180.0], 50)
     print('Coming back up...')
@@ -41,7 +42,7 @@ def bow(mc):
 
     mc.send_angles([111.7,-28.47, 102.12,11.68,0,180.0], 50)
     print('Taking a right bow...')
-    time.sleep(2)
+    time.sleep(3)
 
     mc.send_angles([0, 0, 0, 0, 0, 0], 50)
     print('Back to home...')
@@ -50,6 +51,7 @@ def bow(mc):
 
 if __name__ == "__main__":
     mc = MyCobot(PI_PORT, 115200)
+    mc.set_color(255,0,0)
 
     # Zero out position 
     mc.send_radians([0, 0, 0, 0, 0, 0], 50)
@@ -59,4 +61,5 @@ if __name__ == "__main__":
 
     wiggle(mc)
     bow(mc)
+    mc.set_color(255,0,0)
     print('Done')
